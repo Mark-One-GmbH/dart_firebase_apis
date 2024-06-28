@@ -5447,7 +5447,7 @@ class Value {
           bytesValue: json_.containsKey('bytesValue')
               ? json_['bytesValue'] as core.String
               : null,
-          doubleValue: json_.containsKey('doubleValue')
+          doubleValue: (json_.containsKey('doubleValue') && (json_['doubleValue'] is! core.String))
               ? (json_['doubleValue'] as core.num).toDouble()
               : null,
           geoPointValue: json_.containsKey('geoPointValue')
@@ -5472,7 +5472,6 @@ class Value {
               ? json_['timestampValue'] as core.String
               : null,
         );
-
   core.Map<core.String, core.dynamic> toJson() => {
         if (arrayValue != null) 'arrayValue': arrayValue!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
